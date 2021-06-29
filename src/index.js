@@ -1,14 +1,14 @@
 import express from 'express'
-import { mainRouter } from './app/controllers/mainController.js'
 import { authRouter } from './app/controllers/authController.js'
+import { projectRouter } from './app/controllers/projectController.js'
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/service', mainRouter)
 app.use('/auth', authRouter)
+app.use('/project', projectRouter)
 
 app.listen(3000)
 
