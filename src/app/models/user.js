@@ -31,8 +31,8 @@ const UserSchema = new mongoose.Schema({
   },
   library: [
     {
-      type: String,
-      selected: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Book',
     },
   ],
 })

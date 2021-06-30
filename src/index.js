@@ -1,5 +1,7 @@
 import express from 'express'
 import { authRouter } from './app/controllers/authController.js'
+import { bookRouter } from './app/controllers/bookController.js'
+import { borrowRouter } from './app/controllers/borrowController.js'
 import { projectRouter } from './app/controllers/projectController.js'
 
 const app = express()
@@ -9,6 +11,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/auth', authRouter)
 app.use('/project', projectRouter)
+app.use('/books', bookRouter)
+app.use('/borrow', borrowRouter)
 
 app.listen(3000)
 
