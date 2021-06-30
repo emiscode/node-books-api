@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "60bf3fda-b507-47d8-b25c-e95b931c585e",
+		"name": "Node Books API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"emiscode\",\r\n    \"email\": \"emiscode21@gmail.com\",\r\n    \"password\": \"123465\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/register",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"emiscode20@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/forgot_password",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"emiscode20@gmail.com\",\r\n    \"token\": \"d53797c3787be658acb07a79ddd39d63b6369730\",\r\n    \"newPassword\": \"55555\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/reset_password",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"reset_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"emiscode20@gmail.com\",\r\n    \"password\": \"55555\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/authenticate",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "book",
+			"item": [
+				{
+					"name": "List books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/books",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/books/{{bookId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"books",
+								"{{bookId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Harry Potter and the Prisoner of Azkaban\",\r\n    \"author\": \"J. K. Rowling\",\r\n    \"publisher\": \"Scholastic Inc.\",\r\n    \"publishedDate\": \"2015\",\r\n    \"ISBN_10\": \"0545582938\",\r\n    \"ISBN_13\": \"‎ 978-0545582933\",\r\n    \"pages\": \"464\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/books",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Harry Potter and the Prisoner of Azkaban\",\r\n    \"author\": \"J. K. Rowling\",\r\n    \"publisher\": \"Scholastic Inc.\",\r\n    \"publishedDate\": \"2015\",\r\n    \"ISBN_10\": \"0545582938\",\r\n    \"ISBN_13\": \"‎ 978-0545582933\",\r\n    \"pages\": \"464\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/books/{{bookId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"books",
+								"{{bookId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/books/{{bookId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"books",
+								"{{bookId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "borrow",
+			"item": [
+				{
+					"name": "List borrow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/borrow",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"borrow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show borrow requester",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/borrow/requester/{{requesterUser}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"borrow",
+								"requester",
+								"{{requesterUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show borrow provider",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/borrow/provider/{{providerUser}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"borrow",
+								"provider",
+								"{{providerUser}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create borrow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"requesterUser\": \"60da1089b45cc1688cc8c9c8\",\r\n    \"providerUser\": \"60dbd06a8b9bba6bd05d5bb7\",\r\n    \"book\": \"60dbc0f7f0a3b6ad30030cc5\",\r\n    \"startDate\": \"2021-06-30T02:01:14.276Z\",\r\n    \"endDate\": \"2021-07-30T02:01:14.276Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/borrow",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"borrow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update borrow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"requesterUser\": \"60da1089b45cc1688cc8c9c8\",\r\n    \"providerUser\": \"60dbd06a8b9bba6bd05d5bb7\",\r\n    \"book\": \"60dbc0f7f0a3b6ad30030cc5\",\r\n    \"startDate\": \"2021-06-30T02:01:14.276Z\",\r\n    \"endDate\": \"2021-07-30T02:01:14.276Z\",\r\n    \"approved\": \"true\",\r\n    \"approvedDate\": \"2021-07-02T02:01:14.276Z\",\r\n    \"returnedDate\": \"2021-07-28T02:01:14.276Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/borrow/{{borrowId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"borrow",
+								"{{borrowId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete borrow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/borrow/{{borrowId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"borrow",
+								"{{borrowId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

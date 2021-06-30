@@ -40,7 +40,7 @@ const BorrowSchema = new mongoose.Schema({
     default: false,
   },
   approvedDate: {
-    type: Boolean,
+    type: Date,
     require: true,
     default: undefined,
   },

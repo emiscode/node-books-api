@@ -6,11 +6,25 @@ const borrowRouter = express.Router()
 
 borrowRouter.use(authMiddleware)
 
+borrowRouter.get('/', async (req, res) => {
+  try {
+    const borrows = await Borrow.find()
+
+    return res.send({ borrows })
+  } catch (err) {
+    return res.status(400).send({ error: 'Loading borrow records has failed' })
+  }
+})
+
 borrowRouter.get('/requester/:requesterUser', async (req, res) => {
   try {
     const borrow = await Borrow.find({
       requesterUser: req.params.requesterUser,
-    }).populate(['requesterUser', 'providerUser'])
+    })
+      .lean()
+      .populate('requesterUser', 'email')
+      .populate('providerUser', 'email')
+      .populate('book', 'title')
 
     return res.send({ borrow })
   } catch (err) {
@@ -58,6 +72,7 @@ borrowRouter.put('/:borrowId', async (req, res) => {
 
     return res.send({ borrow })
   } catch (err) {
+    console.log(err)
     return res
       .status(400)
       .send({ error: 'Updating borrow book record has failed' })
