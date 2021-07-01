@@ -19,10 +19,6 @@ const authMiddleware = function (req, res, next) {
   jwt.verify(token, md5, (err, decoded) => {
     if (err) return res.status(401).send({ error: 'Invalid token' })
 
-    /* if (Date.now() >= decode.exp * 1000)
-      return res.status(401).send({ error: 'The token has expired' })
-    */
-
     req.userId = decoded.id
   })
 

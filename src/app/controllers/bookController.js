@@ -4,7 +4,7 @@ import { Book } from '../models/Book.js'
 
 const bookRouter = express.Router()
 
-bookRouter.use(authMiddleware)
+//bookRouter.use(authMiddleware)
 
 bookRouter.get('/', async (req, res) => {
   try {

@@ -1,3 +1,4 @@
+import cors from 'cors'
 import express from 'express'
 import { authRouter } from './app/controllers/authController.js'
 import { bookRouter } from './app/controllers/bookController.js'
@@ -9,6 +10,11 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.use(
+  cors({
+    origin: '*',
+  })
+)
 app.use('/auth', authRouter)
 app.use('/project', projectRouter)
 app.use('/books', bookRouter)
